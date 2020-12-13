@@ -5,6 +5,8 @@
  */
 package prospacegalactictrade;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author YTR
@@ -16,6 +18,13 @@ public class ProspaceGalacticTrade {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        JFrame frame = new JFrame();
+        MainPanel panel = new MainPanel();
+        frame.setContentPane(panel);
+        frame.setSize(panel.getPreferredSize());
+        frame.pack();
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
     
