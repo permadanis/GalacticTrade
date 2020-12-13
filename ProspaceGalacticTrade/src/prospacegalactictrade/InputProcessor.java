@@ -38,7 +38,13 @@ class InputProcessor {
                 
                 String itemName = param[0].substring(lastSpaceIdx).trim();
                 galacticSymbol.SetPrice(itemName, price/totalItem);
-            }
+            }else if(lastWord.contains("?") && param[0].trim().toLowerCase().equals("how much")){
+                int lastQuestMark = param[1].trim().lastIndexOf("?");
+                
+                String galacticNumber = param[1].substring(0, lastQuestMark);
+                int total =  galacticSymbol.Calculate(galacticNumber);
+                output += galacticNumber +" is "+total+"\n\r";
+             }
             else if(lastWord.contains("?") && param[0].trim().toLowerCase().equals("how many credits")){
                 int lastQuestMark = param[1].trim().lastIndexOf("?");
                 String tmp = param[1].substring(0, lastQuestMark);
@@ -48,7 +54,7 @@ class InputProcessor {
                 String galacticNumber = param[1].substring(0, lastSpaceIdx);
                 String itemName = param[1].substring(lastSpaceIdx, lastQuestMark).trim();
                 output += galacticSymbol.GetTotalCredits(galacticNumber, itemName)+"\r\n";
-            }
+            }             
             else{
                 output+= "I have no idea what you are talking about\r\n";
             }
