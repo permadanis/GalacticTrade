@@ -5,6 +5,8 @@
  */
 package prospacegalactictrade;
 
+import java.util.HashMap;
+
 /**
  *
  * @author YTR
@@ -12,14 +14,36 @@ package prospacegalactictrade;
 public class RomanRule {
     // if smaller number before bigger number then substract
     // no more 3 character in a row
-   
+    static final HashMap<String, String> substractedRole = new HashMap<>();
+    {
+        
+        substractedRole.put("V", "I");
+        substractedRole.put("X", "I");
+        substractedRole.put("L", "X");
+        substractedRole.put("C", "X");
+        substractedRole.put("D", "C");
+        substractedRole.put("M", "C");
+        
+    }
     public boolean IsValid(String input, GalacticSymbols numericSymbol){
-        String[] symbols = input.split(" ");
+        
+        String romanNumber = numericSymbol.ToRomanSymbols(input);
+        if(romanNumber.isEmpty())
+            return false;
+        
+        if(!checkNo3DuplicateInARow(romanNumber))
+            return false;
+        
+        if(!checkBigToSmall(romanNumber))
+            return false;
+        
+        return true;
+    }
+    boolean checkNo3DuplicateInARow(String romanNumber){
+        String[] symbols = romanNumber.split("");
         String lastSymbol = "";
         int count = 0;
         for(String s: symbols){
-            if(!numericSymbol.Contains(s))
-                return false;
             
             if(lastSymbol.equals(s))
                 count++;
@@ -34,8 +58,29 @@ public class RomanRule {
         }
         return true;
     }
+    
+    private boolean checkBigToSmall(String romanNumber) {
+        String[] symbols = romanNumber.split("");
+        int lastValue = Integer.MAX_VALUE;
+        for(int i=1; i<symbols.length; i++){
+            int before = RomanChar.Get(symbols[i - 1]).Value();
+            int current = RomanChar.Get(symbols[i]).Value();
+            
+            if(before < current){
+                String charBefore = symbols[i - 1];
+                String charCurrent = symbols[i];
+                
+                if(!charBefore.equals(substractedRole.get(charCurrent)))
+                    return false;
+            }
+        }
+        return true;
+        
+    }
     public int GetValue(String validRomanNumber){
         int total = 0;
         return total;
     }
+
+    
 }

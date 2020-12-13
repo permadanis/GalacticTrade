@@ -13,8 +13,8 @@ import java.util.HashMap;
  */
 public enum RomanChar {    
     I("I", 1), V("V",5), X("X", 10), L("L", 50), C("C", 100), D("D", 500), M("M", 100);
-    String symbol;
-    int value;
+    private String symbol;
+    private int value;
     RomanChar(String symbol, int value){
         this.symbol = symbol;
         this.value = value;

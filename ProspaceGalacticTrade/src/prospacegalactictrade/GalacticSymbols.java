@@ -43,7 +43,11 @@ public class GalacticSymbols {
         return itemsPrice.get(item);
     }
     int Calculate(String galacticNumber){
-        return -1;
+        if(!romanRule.IsValid(galacticNumber, this))
+            return -1;
+        
+        String romanSymbol = ToRomanSymbols(galacticNumber);
+        return romanRule.GetValue(romanSymbol);
     }
     String GetTotalCredits(String galacticNumber, String itemName){
          if(!itemsPrice.containsKey(itemName))
