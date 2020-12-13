@@ -13,7 +13,7 @@ import java.util.HashMap;
  */
 public class GalacticSymbols {
     private HashMap<String, RomanChar> symbols = new HashMap<>();
-    HashMap<String, Integer> itemsPrice = new HashMap<>();
+    HashMap<String, Double> itemsPrice = new HashMap<>();
     RomanRule romanRule = new RomanRule();
        
     public void SetSymbol(String symbol, RomanChar romanChar){
@@ -36,10 +36,10 @@ public class GalacticSymbols {
         return result;
     }
 
-    void SetPrice(String item, int price) {
+    void SetPrice(String item, Double price) {
         itemsPrice.put(item, price);
     }
-    public int GetPrice(String item){
+    public Double GetPrice(String item){
         return itemsPrice.get(item);
     }
     int Calculate(String galacticNumber){
@@ -54,8 +54,8 @@ public class GalacticSymbols {
              return "invalid Item name";
          
          int nItem = Calculate(galacticNumber);
-         int price = itemsPrice.get(itemName);
-         int total = nItem * price;
-         return galacticNumber +" "+itemName+" is "+total+" Credits";
+         Double price = itemsPrice.get(itemName);
+         Double total = nItem * price;
+         return galacticNumber +" "+itemName+" is "+((Number)total).intValue()+" Credits";
     }
 }

@@ -34,10 +34,10 @@ class InputProcessor {
                 int totalItem = galacticSymbol.Calculate(galacticNumber);
                 
                 String[] priceStr = param[1].split(" ");
-                int price = Integer.parseInt(priceStr[0]);
+                double price = Double.parseDouble(priceStr[0]);
                 
                 String itemName = param[0].substring(lastSpaceIdx).trim();
-                galacticSymbol.SetPrice(itemName, price/totalItem);
+                galacticSymbol.SetPrice(itemName, price/(double)totalItem);
             }else if(lastWord.contains("?") && param[0].trim().toLowerCase().equals("how much")){
                 int lastQuestMark = param[1].trim().lastIndexOf("?");
                 
