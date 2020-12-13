@@ -61,7 +61,6 @@ public class RomanRule {
     
     private boolean checkBigToSmall(String romanNumber) {
         String[] symbols = romanNumber.split("");
-        int lastValue = Integer.MAX_VALUE;
         for(int i=1; i<symbols.length; i++){
             int before = RomanChar.Get(symbols[i - 1]).Value();
             int current = RomanChar.Get(symbols[i]).Value();
@@ -79,7 +78,19 @@ public class RomanRule {
     }
     public int GetValue(String validRomanNumber){
         int total = 0;
+        String [] tmp = validRomanNumber.split("");
+        int lastvalue = 0;
+        for(String roman: tmp){
+            int value = RomanChar.Get(roman).Value();
+            total += value;
+            if(lastvalue != 0){
+                if(lastvalue < value)
+                    total -= 2 * lastvalue;
+            }
+            lastvalue = value;
+        }
         return total;
+        
     }
 
     
