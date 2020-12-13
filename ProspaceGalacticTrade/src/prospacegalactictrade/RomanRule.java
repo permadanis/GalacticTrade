@@ -12,12 +12,9 @@ package prospacegalactictrade;
 public class RomanRule {
     // if smaller number before bigger number then substract
     // no more 3 character in a row
-    GalacticSymbols numericSymbol = null;
-    public RomanRule(GalacticSymbols symbols){
-        this.numericSymbol = symbols;
-    }
-    public boolean IsValid(String input){
-        String[] symbols = input.split("");
+   
+    public boolean IsValid(String input, GalacticSymbols numericSymbol){
+        String[] symbols = input.split(" ");
         String lastSymbol = "";
         int count = 0;
         for(String s: symbols){
@@ -37,10 +34,7 @@ public class RomanRule {
         }
         return true;
     }
-    public int GetValue(String input){
-        if(!IsValid(input))
-            return -1;
-        
+    public int GetValue(String validRomanNumber){
         int total = 0;
         return total;
     }
