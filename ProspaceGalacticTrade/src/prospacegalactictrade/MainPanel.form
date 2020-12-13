@@ -67,6 +67,7 @@
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
+            <Property name="text" type="java.lang.String" value="glob is I &#xa;prok is V &#xa;pish is X &#xa;tegj is L &#xa;glob glob Silver is 34 Credits &#xa;glob prok Gold is 57800 Credits &#xa;pish pish Iron is 3910 Credits &#xa;how much is pish tegj glob glob ? &#xa;how many Credits is glob prok Silver ? &#xa;how many Credits is glob prok Gold ? &#xa;how many Credits is glob prok Iron ? &#xa;how much wood could a woodchuck chuck if a woodchuck could chuck wood ?"/>
           </Properties>
         </Component>
       </SubComponents>

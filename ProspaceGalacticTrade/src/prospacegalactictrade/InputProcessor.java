@@ -16,32 +16,38 @@ class InputProcessor {
         GalacticSymbols galacticSymbol = new GalacticSymbols();
        
         String output = "";
-        String[] lines = text.split(System.getProperty("line.separator"));
+        //String[] lines = text.split(System.getProperty("line.separator"));
+        String[] lines = text.split("\n");
         for(String line: lines){
             line = line.trim();
             String[] words = line.split(" ");
             String lastWord = words[words.length - 1];
             
-             String[] param = line.split("is");
+             String[] param = line.split(" is ");
             if(RomanChar.Get(lastWord) != null){
-                galacticSymbol.SetSymbol(param[0], RomanChar.Get(param[1]));
+                RomanChar romanchar = RomanChar.Get(param[1].trim());
+                galacticSymbol.SetSymbol(param[0], romanchar);
             }
             else if(lastWord.toLowerCase().equals("credits")){
-                int lastSpaceIdx = param[0].lastIndexOf(" ");
-                
-                int totalItem = galacticSymbol.Calculate(param[0].substring(0, lastSpaceIdx));
+                int lastSpaceIdx = param[0].trim().lastIndexOf(" ");
+                String galacticNumber = param[0].substring(0, lastSpaceIdx);
+                int totalItem = galacticSymbol.Calculate(galacticNumber);
                 
                 String[] priceStr = param[1].split(" ");
                 int price = Integer.parseInt(priceStr[0]);
                 
-                String itemName = param[0].substring(lastSpaceIdx);
+                String itemName = param[0].substring(lastSpaceIdx).trim();
                 galacticSymbol.SetPrice(itemName, price/totalItem);
             }
             else if(lastWord.contains("?") && param[0].trim().toLowerCase().equals("how many credits")){
-                int lastSpaceIdx = param[1].trim().lastIndexOf(" ");
+                int lastQuestMark = param[1].trim().lastIndexOf("?");
+                String tmp = param[1].substring(0, lastQuestMark);
+                
+                int lastSpaceIdx = tmp.trim().lastIndexOf(" ");
+               
                 String galacticNumber = param[1].substring(0, lastSpaceIdx);
-                String itemName = param[1].substring(lastSpaceIdx);
-                output += galacticSymbol.GetTotalCredits(galacticNumber, itemName);
+                String itemName = param[1].substring(lastSpaceIdx, lastQuestMark).trim();
+                output += galacticSymbol.GetTotalCredits(galacticNumber, itemName)+"\r\n";
             }
             else{
                 output+= "I have no idea what you are talking about\r\n";

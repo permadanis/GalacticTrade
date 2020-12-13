@@ -38,6 +38,7 @@ public class MainPanel extends javax.swing.JPanel {
 
         txtInput.setColumns(20);
         txtInput.setRows(5);
+        txtInput.setText("glob is I \nprok is V \npish is X \ntegj is L \nglob glob Silver is 34 Credits \nglob prok Gold is 57800 Credits \npish pish Iron is 3910 Credits \nhow much is pish tegj glob glob ? \nhow many Credits is glob prok Silver ? \nhow many Credits is glob prok Gold ? \nhow many Credits is glob prok Iron ? \nhow much wood could a woodchuck chuck if a woodchuck could chuck wood ?");
         jScrollPane1.setViewportView(txtInput);
 
         btnProcess.setText("Process");
