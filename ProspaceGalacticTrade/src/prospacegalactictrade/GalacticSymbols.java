@@ -13,7 +13,7 @@ import java.util.HashMap;
  */
 public class GalacticSymbols {
     private HashMap<String, RomanChar> symbols = new HashMap<>();
-    HashMap<String, Double> itemsPrice = new HashMap<>();
+    private HashMap<String, Double> itemsPrice = new HashMap<>();
     RomanRule romanRule = new RomanRule();
        
     public void SetSymbol(String symbol, RomanChar romanChar){
