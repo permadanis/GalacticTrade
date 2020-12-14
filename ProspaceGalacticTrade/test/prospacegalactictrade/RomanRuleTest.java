@@ -29,7 +29,51 @@ public class RomanRuleTest {
     @AfterClass
     public static void tearDownClass() {
     }
-
+    @Test
+    public void IsValidRomanWithErrorInput(){
+        RomanRule romanrule = new RomanRule();
+        boolean value = romanrule.IsValidRoman("");
+        assertEquals(false, value);
+        
+        value = romanrule.IsValidRoman("VIIIII");
+        assertEquals(false, value);
+        
+        value = romanrule.IsValidRoman("ILCM");
+        assertEquals(false, value);
+        
+        value = romanrule.IsValidRoman("XXXIXIX");
+        assertEquals(false, value);
+        
+        
+    }
+    
+    @Test
+    public void IsValidRomanWithValidInput(){
+        RomanRule romanrule = new RomanRule();
+        boolean value = romanrule.IsValidRoman("III");
+        assertEquals(true, value);
+        
+        value = romanrule.IsValidRoman("VIII");
+        assertEquals(true, value);
+        
+        value = romanrule.IsValidRoman("XIV");
+        assertEquals(true, value);
+        
+    }
+    
+    @Test
+    public void GetValue(){
+        RomanRule romanrule = new RomanRule();
+        int value = romanrule.GetValue("I");
+        assertEquals(1, value);
+        value = romanrule.GetValue("III");
+        assertEquals(3, value);
+        value = romanrule.GetValue("IV");
+        assertEquals(4, value);
+        value = romanrule.GetValue("XIV");
+        assertEquals(14, value);
+    
+    }
     /**
      * Test of IsValid method, of class RomanRule.
      */

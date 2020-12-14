@@ -28,6 +28,11 @@ public class RomanRule {
     public boolean IsValid(String input, GalacticSymbols numericSymbol){
         
         String romanNumber = numericSymbol.ToRomanSymbols(input);
+        if(!IsValidRoman(romanNumber))
+            return false;
+        return true;
+    }
+    public boolean IsValidRoman(String romanNumber){
         if(romanNumber.isEmpty())
             return false;
         
@@ -37,8 +42,12 @@ public class RomanRule {
         if(!checkBigToSmall(romanNumber))
             return false;
         
+        if(!checkNoMore4timesAppear(romanNumber))
+            return false;
+        
         return true;
     }
+    
     boolean checkNo3DuplicateInARow(String romanNumber){
         String[] symbols = romanNumber.split("");
         String lastSymbol = "";
@@ -58,7 +67,17 @@ public class RomanRule {
         }
         return true;
     }
-    
+    private boolean checkNoMore4timesAppear(String romanNumber) {
+        String[] tmp = romanNumber.split("");
+        HashMap<String, Integer> appearance = new HashMap<>();
+        for(String s: tmp){
+            int nAppear = appearance.getOrDefault(s, 0) + 1;
+            if(nAppear >= 5)
+                return false;
+            appearance.put(s, nAppear);
+        }
+        return true;
+    }
     private boolean checkBigToSmall(String romanNumber) {
         String[] symbols = romanNumber.split("");
         for(int i=1; i<symbols.length; i++){
@@ -77,6 +96,7 @@ public class RomanRule {
         
     }
     public int GetValue(String validRomanNumber){
+        
         int total = 0;
         String [] tmp = validRomanNumber.split("");
         int lastvalue = 0;
@@ -92,6 +112,8 @@ public class RomanRule {
         return total;
         
     }
+
+    
 
     
 }
