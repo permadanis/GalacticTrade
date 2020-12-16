@@ -64,7 +64,12 @@ class InputProcessor {
 
     private String SetSymbol(String lineInput) {
         String[] param = lineInput.split(" is ");
+        for (String s : param) {
+            if (s.trim().contains(" ")) {
+                return ErrorCode.SetSymbol_Failed.toString();
+            }
 
+        }
         try {
             RomanChar romanchar = RomanChar.Get(param[1].trim());
             galacticSymbol.SetSymbol(param[0], romanchar);
@@ -93,7 +98,7 @@ class InputProcessor {
         } catch (Exception ex) {
             ex.printStackTrace();
             return ErrorCode.SetPrice_Failed.toString();
-                    }
+        }
 
         return "";
     }
@@ -112,7 +117,7 @@ class InputProcessor {
         if (totalCredit == null) {
             return ErrorCode.CalculateTotalCreditFailed.toString();
         } else {
-            return galacticNumber +" "+itemName+" is "+((Number)totalCredit).intValue()+" Credits\n\r";
+            return galacticNumber + " " + itemName + " is " + ((Number) totalCredit).intValue() + " Credits\n\r";
         }
 
     }
@@ -129,7 +134,8 @@ class InputProcessor {
     }
 
 }
-enum ErrorCode{
+
+enum ErrorCode {
     SetSymbol_Failed("<<Error: Galactic Setting Symbols Failed. Please check your input. example: glob is I>>\n\r"),
     SetPrice_Failed("<<Error: Can not Set Price. Please check your inputs. Example glob glob Silver is 34 Credits>>"),
     InvalidGalacticNumber("<<Error: Invalid symbols. Please Set Galactic Symbols to Roman numerals.>>\n\r"),
@@ -137,11 +143,13 @@ enum ErrorCode{
     CalculateTotalCreditFailed("<<Error: Can not Calculate Credits. Please Check your Galactic Symbol and Item Price. Example: glob glob Silver is 34 Credits>>\r\n"),
     NoIdea("I have no idea what you are talking about\r\n");
     String value;
-    ErrorCode(String value){
+
+    ErrorCode(String value) {
         this.value = value;
     }
+
     @Override
-    public String toString(){
+    public String toString() {
         return value;
     }
 }

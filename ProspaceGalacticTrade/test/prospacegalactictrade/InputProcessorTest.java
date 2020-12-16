@@ -82,6 +82,50 @@ public class InputProcessorTest {
         expected = "";
         assertEquals(expected, result);
 
+        input = "a is i\n"
+                + "b is v\n"
+                + "a b bread is 12 Credits\n"
+                + "c c rice is 40 Credits\n";
+        result = inputProcessor.Process(input);
+        expected = ErrorCode.InvalidGalacticNumber.toString();
+        assertEquals(expected, result);
+
+        input = "a is i\n"
+                + "b is v\n"
+                + "c is x\n"
+                + "a b bread is 12 Credits\n"
+                + "c c rice is 40 Credits\n"
+                + "c c c is c c c";
+        result = inputProcessor.Process(input);
+        expected = ErrorCode.SetSymbol_Failed.toString();
+        assertEquals(expected, result);
+
+        input = "how many is a b c?";
+        result = inputProcessor.Process(input);
+        expected = ErrorCode.NoIdea.toString();
+        assertEquals(expected, result);
+
+        input = "a is i\n"
+                + "b is v\n"
+                + "c is x\n"
+                + "a b bread is 12 Credits\n"
+                + "c c rice is 40 Credits\n"
+                + "how much is a b c?";
+        result = inputProcessor.Process(input);
+        expected = ErrorCode.InvalidGalacticNumber.toString();
+        assertEquals(expected, result);
+        
+        
+        input = "a is i\n"
+                + "b is v\n"
+                + "c is x\n"
+                + "a b bread is 12 Credits\n"
+                + "c c rice is 40 Credits\n"
+                + "how much is c b a?";
+        result = inputProcessor.Process(input);
+        expected = "c b a is 16";
+        assertEquals(expected, result);
+
     }
 
     @Test
