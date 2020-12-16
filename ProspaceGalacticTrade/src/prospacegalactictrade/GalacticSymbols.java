@@ -43,6 +43,7 @@ public class GalacticSymbols {
         return itemsPrice.get(item);
     }
     int Calculate(String galacticNumber){
+        galacticNumber = galacticNumber.trim();
         if(!romanRule.IsValid(galacticNumber, this))
             return -1;
         
