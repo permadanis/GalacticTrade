@@ -135,15 +135,21 @@ public class GalacticSymbolsTest {
     @Test
     public void testCalculate() {
         System.out.println("Calculate");
-        String galacticNumber = "symbol1 symbol5";
         GalacticSymbols instance = new GalacticSymbols();
+        int result = instance.Calculate("inExistSymbol");
+        assertEquals(-1, result);
+        
         instance.SetSymbol("symbol1", RomanChar.I);
         instance.SetSymbol("symbol5", RomanChar.V);
         instance.SetSymbol("symbol6", RomanChar.X);
         instance.SetSymbol("symbol50", RomanChar.L);
-
+        
+        result = instance.Calculate("symbol1 inExistSymbol");
+        assertEquals(-1, result);
+        
         int expResult = 4;
-        int result = instance.Calculate(galacticNumber);
+        String galacticNumber = "symbol1 symbol5";
+        result = instance.Calculate(galacticNumber);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
        

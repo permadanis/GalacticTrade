@@ -93,7 +93,7 @@ public class MainPanel extends javax.swing.JPanel {
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
         // TODO add your handling code here:
-        String output = inputProcessor.Process(txtInput.getText());
+        String output = inputProcessor.Process(txtInput.getText().trim());
         txtOutput.setText(output);
     }//GEN-LAST:event_btnProcessActionPerformed
 

@@ -51,11 +51,19 @@ public class GalacticSymbols {
     }
     String GetTotalCredits(String galacticNumber, String itemName){
          if(!itemsPrice.containsKey(itemName))
-             return "invalid Item name";
+             return null;
          
          int nItem = Calculate(galacticNumber);
+         if(nItem < 0)
+             return null;
+         
          Double price = itemsPrice.get(itemName);
          Double total = nItem * price;
          return galacticNumber +" "+itemName+" is "+((Number)total).intValue()+" Credits";
+    }
+
+    void Clear() {
+        itemsPrice.clear();
+        symbols.clear();
     }
 }
