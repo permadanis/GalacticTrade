@@ -25,9 +25,9 @@ public class RomanRule {
         substractedRole.put("M", "C");
         
     }
-    public boolean IsValid(String input, GalacticSymbols numericSymbol){
+    public boolean IsValid(String input, GalacticSymbols galacticSymbol){
         
-        String romanNumber = numericSymbol.ToRomanSymbols(input);
+        String romanNumber = galacticSymbol.ToRomanSymbols(input);
         if(!IsValidRoman(romanNumber))
             return false;
         return true;

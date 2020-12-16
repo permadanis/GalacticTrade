@@ -20,13 +20,13 @@ public class GalacticSymbols {
         symbols.put(symbol, romanChar);
     }
 
-    boolean Contains(String s) {
-        return symbols.containsKey(s);
+    boolean Contains(String symbol) {
+        return symbols.containsKey(symbol);
     }
     
-    public String ToRomanSymbols(String input){
+    public String ToRomanSymbols(String galacticSymbols){
         String result = "";
-        String[] arr = input.split(" ");
+        String[] arr = galacticSymbols.split(" ");
         for(String s: arr){
             if(!symbols.containsKey(s))
                 return "";
@@ -49,7 +49,7 @@ public class GalacticSymbols {
         String romanSymbol = ToRomanSymbols(galacticNumber);
         return romanRule.GetValue(romanSymbol);
     }
-    String GetTotalCredits(String galacticNumber, String itemName){
+    Double GetTotalCredits(String galacticNumber, String itemName){
          if(!itemsPrice.containsKey(itemName))
              return null;
          
@@ -59,7 +59,8 @@ public class GalacticSymbols {
          
          Double price = itemsPrice.get(itemName);
          Double total = nItem * price;
-         return galacticNumber +" "+itemName+" is "+((Number)total).intValue()+" Credits";
+         return total;
+         //return galacticNumber +" "+itemName+" is "+((Number)total).intValue()+" Credits";
     }
 
     void Clear() {

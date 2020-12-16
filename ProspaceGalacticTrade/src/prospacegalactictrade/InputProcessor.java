@@ -108,11 +108,11 @@ class InputProcessor {
 
         String galacticNumber = param[1].substring(0, lastSpaceIdx);
         String itemName = param[1].substring(lastSpaceIdx, lastQuestMark).trim();
-        String totalCredit = galacticSymbol.GetTotalCredits(galacticNumber, itemName) + "\r\n";
+        Double totalCredit = galacticSymbol.GetTotalCredits(galacticNumber, itemName);
         if (totalCredit == null) {
             return "<<Error: Can not Calculate Credits. Please Check your Galactic Symbol and Item Price. Example: glob glob Silver is 34 Credits>>";
         } else {
-            return totalCredit;
+            return galacticNumber +" "+itemName+" is "+((Number)totalCredit).intValue()+" Credits\n\r";
         }
 
     }

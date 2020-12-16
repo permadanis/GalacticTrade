@@ -173,8 +173,8 @@ public class GalacticSymbolsTest {
         String galacticNumber = "symbol1 symbol1";
         String itemName = "Silver";
        
-        String expResult = galacticNumber+" "+itemName+" is "+"24 Credits";
-        String result = instance.GetTotalCredits(galacticNumber, itemName);
+        Double expResult = 24.0;
+        Double result = instance.GetTotalCredits(galacticNumber, itemName);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
