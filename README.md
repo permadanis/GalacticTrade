@@ -1,12 +1,13 @@
 # GalacticTrade
 Requirement
-JDK 1.8
-Netbean IDE
+Maven
+JDK 11.0.8
 
-To run the project from the command line, go to the dist folder and
-type the following:
+Build:
+mvn package
 
-java -jar "ProspaceGalacticTrade.jar" 
+Run Main File:
+java -cp target\GalacticTrade-1.0-SNAPSHOT.jar com.prospace.galactictrade.Main input.txt
 
 -------------------------
 Class Hierachy		
