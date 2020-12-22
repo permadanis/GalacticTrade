@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package prospacegalactictrade;
+package com.prospace.galactictrade;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
